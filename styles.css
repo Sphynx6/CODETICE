@@ -1,0 +1,68 @@
+h1{
+    color: rgb(235, 232, 241);
+    font-size: 50px;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+#n0, #n1, #n2, #n3, #n4, #n5, #n6, #n7, #n8, #n9, #opp, #opm, #ops, #opf, #ope, #ac, #dot, #opmo{ 
+    width:140px;
+    height:100px;
+    text-align: center;
+    font-size: 40px;
+
+}
+#calc{
+    width: 600px;
+    height: 700px;
+    background-color: rgb(40, 40, 75);
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 100px;
+    box-shadow: 0px 0px 10px 0px rgb(0, 0, 0);
+}
+#n0{
+    width: 284px;
+}
+#ac{
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+    width: 286.9px;
+}
+#opp, #opm, #ops, #opf,#dot, #opmo, #ope{
+    background-color: rgb(20, 5, 133);
+    color: rgb(255, 255, 255);
+}
+div{
+    float: left;
+    display: block;
+    text-align: center;
+}
+#n0, #dot, #ops{
+    margin-top: 4px;
+}
+#result{
+    width: 100%;
+    height: 90px;
+    background-color: rgb(185, 177, 177);
+    font-size: 50px;
+    text-align: right;
+    box-sizing: border-box;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 20px;
+    margin-bottom: 4px;
+    margin-top: -15px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: black;
+}
+#previous{
+    font-size: 20px;
+    margin-top: -5px;
+    color: rgb(5, 122, 118);
+}
+#current{
+    font-size: 50px;
+    margin-top: -40px;
+}
