@@ -1,0 +1,106 @@
+html {
+    scroll-behavior: smooth;
+}
+#plan{
+    background-color: #000000;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #000000;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #666;
+    transition: smooth;
+    display: flex;
+    justify-content: center;
+}
+.list{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+}
+#title{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+body{
+    background-color: #4949dd;
+}
+#description{
+    text-align: center;
+    font-size: 15px;
+}
+.link{
+    text-decoration: none;
+    color: #008cff;
+}
+#Bio{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#Miyamoto{
+    height: 490px;
+}
+#Philosopher, #Swordsman, #Writer{
+    display: flex;
+}
+.p{
+    margin-top: auto;
+    text-align: center;
+    font-size: 40px;
+    background-color: #ffffff;
+    width: 100%;
+}
+.img{
+    height: 50vw;
+}
+.p_title{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(8, 5, 117);
+    margin-top: 0px;
+}
+.p_b{
+    text-align: left;
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+    height: 100%;
+}
+#ronin{
+    width: 98vw;
+    height: 55vh;
+}
+#p_ronin{
+    text-align: center;
+    font-size: 30px;
+    font-weight: italic;
+    color: rgb(0, 0, 0);
+    margin-top: 0px;
+}
+#title_block{
+    background-color: rgb(0, 0, 0);
+    color: #ffffff;
+}
+#title_blockt{
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+}
+#s_p{
+    margin-right: 100px;
+}
+#imgd{
+    color: rgb(255, 255, 255);
+}
