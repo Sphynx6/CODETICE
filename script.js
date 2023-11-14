@@ -1,3 +1,4 @@
+//calculator class
 class Calculator {
     constructor(previousOperandTextElement, currentOperandTextElement) {
         this.previousOperandTextElement = previousOperandTextElement;
@@ -5,12 +6,14 @@ class Calculator {
         this.clear();
     }
 
+    //clear method
     clear() {
         this.currentOperand = '';
         this.previousOperand = '';
         this.operation = undefined;
     }
 
+    //update display method
     updateDisplay() {
         this.currentOperandTextElement.innerText =
         this.getDisplayNumber(this.currentOperand)
@@ -22,6 +25,8 @@ class Calculator {
             this.previousOperandTextElement.innerText = ''
         }
     }
+
+    //append number method
     appendNumber(number) {
         if (isNaN(this.currentOperand) || this.currentOperand === '') {
             this.currentOperand = number;
@@ -29,6 +34,8 @@ class Calculator {
             this.currentOperand = this.currentOperand.toString() + number.toString();
         }
     }
+
+    //choose operation method
     chooseOperation(operation) {
         if (this.currentOperand === '') return
         if (this.previousOperand !== '') {
@@ -38,6 +45,8 @@ class Calculator {
         this.previousOperand = this.currentOperand
         this.currentOperand = ''
     }
+
+    //get display number method
     getDisplayNumber(number) {
         const stringNumber = number.toString();
         let integerDigits;
@@ -45,8 +54,8 @@ class Calculator {
         if (stringNumber.includes('.')) {
             integerDigits = parseFloat(stringNumber.split('.')[0]);
             decimalDigits = parseFloat(stringNumber.split('.')[1]);
-            if (isNaN(decimalDigits)) {
-                decimalDigits = '';
+            if (isNaN(decimalDigits)) {  
+                decimalDigits = '';  //if decimalDigits is NaN, then it will be empty
             } 
         } else {
             integerDigits = parseFloat(stringNumber);
@@ -65,36 +74,38 @@ class Calculator {
         }
     }
 
+    //compute method
     compute() {
-        let computation
+        let comput;
         const prev = parseFloat(this.previousOperand);
         const current = parseFloat(this.currentOperand);
         if (isNaN(prev) || isNaN(current)) return;
         switch (this.operation) {
             case '+':
-                computation = prev + current;
+                comput = prev + current;
                 break;
             case '-':
-                computation = prev - current;
+                comput = prev - current;
                 break;
             case '*':
-                computation = prev * current;
+                comput = prev * current;
                 break;
             case '/':
-                computation = prev / current;
+                comput = prev / current;
                 break;
             case '%':
-                computation = prev % current;
+                comput = prev % current;
                 break;
             default:
                 return;
         }
-        this.currentOperand = computation;
+        this.currentOperand = comput;
         this.operation = undefined;
         this.previousOperand = '';
     }
 }
 
+// declaration
 const numbers = document.querySelectorAll('[data-nb]');
 const operators = document.querySelectorAll('[data-op]');
 const equals = document.querySelector('[data-eq]');
@@ -102,6 +113,7 @@ const allClear = document.querySelector('[data-ac]');
 const currentOperandTextElement = document.querySelector('[data-cur]');
 const previousOperandTextElement = document.querySelector('[data-pre]');
 
+//main
 const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement);
 
 numbers.forEach(button => {
