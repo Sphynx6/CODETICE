@@ -46,7 +46,7 @@ class Calculator {
             integerDigits = parseFloat(stringNumber.split('.')[0]);
             decimalDigits = parseFloat(stringNumber.split('.')[1]);
             if (isNaN(decimalDigits)) {
-                decimalDigits = 0;
+                decimalDigits = '';
             } 
         } else {
             integerDigits = parseFloat(stringNumber);
