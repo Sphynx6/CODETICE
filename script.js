@@ -6,27 +6,25 @@ class Calculator {
         this.clear();
     }
 
-    //clear method
+    //clear method clears the values of the current and previous operands and the operation
     clear() {
         this.currentOperand = '';
         this.previousOperand = '';
         this.operation = undefined;
     }
 
-    //update display method
+    //update display method updates the values of the current and previous operands
     updateDisplay() {
-        this.currentOperandTextElement.innerText =
-        this.getDisplayNumber(this.currentOperand)
+        this.currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOperand)
         if (this.operation != null) {
-            this.previousOperandTextElement.innerText =
-            `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
+            this.previousOperandTextElement.innerText = `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
         }   
         else {
             this.previousOperandTextElement.innerText = ''
         }
     }
 
-    //append number method
+    //append number method appends the value to the current operand 
     appendNumber(number) {
         if (isNaN(this.currentOperand) || this.currentOperand === '') {
             this.currentOperand = number;
@@ -37,9 +35,9 @@ class Calculator {
 
     //choose operation method
     chooseOperation(operation) {
-        if (this.currentOperand === '') return
+        if (this.currentOperand === '') return //if current operand is empty,  return nothing
         if (this.previousOperand !== '') {
-          this.compute()
+          this.calculate()
         }
         this.operation = operation
         this.previousOperand = this.currentOperand
@@ -51,67 +49,70 @@ class Calculator {
         const stringNumber = number.toString();
         let integerDigits;
         let decimalDigits;
-        if (stringNumber.includes('.')) {
+        if (stringNumber.includes('.')) { //incase the number is a decimal
             integerDigits = parseFloat(stringNumber.split('.')[0]);
             decimalDigits = parseFloat(stringNumber.split('.')[1]);
             if (isNaN(decimalDigits)) {  
                 decimalDigits = '';  //if decimalDigits is NaN, then it will be empty
             } 
-        } else {
-            integerDigits = parseFloat(stringNumber);
+        } 
+        else {
+            integerDigits = number;
             decimalDigits = null;
         }
         let integerDisplay;
         if (isNaN(integerDigits)) {
             integerDisplay = '';
-        } else {
+        } 
+        else {
             integerDisplay = integerDigits.toLocaleString('en', { maximumFractionDigits: 0 });
         }
         if (decimalDigits != null) {
-            return `${integerDisplay}.${decimalDigits}`;
-        } else {
+            return integerDisplay +'.' + decimalDigits;
+        } 
+        else {
             return integerDisplay;
         }
     }
 
-    //compute method
-    compute() {
-        let comput;
-        const prev = parseFloat(this.previousOperand);
-        const current = parseFloat(this.currentOperand);
-        if (isNaN(prev) || isNaN(current)) return;
+    //calculate method 
+    calculate() {
+        let calc;
+        const prev = parseFloat(this.previousOperand); //converts previous number to float
+        const current = parseFloat(this.currentOperand); //converts current number to float
+        if (isNaN(prev) || isNaN(current)) return; //if prev or current is NaN, return nothing
         switch (this.operation) {
             case '+':
-                comput = prev + current;
+                calc = prev + current;
                 break;
             case '-':
-                comput = prev - current;
+                calc = prev - current;
                 break;
             case '*':
-                comput = prev * current;
+                calc = prev * current;
                 break;
             case '/':
-                comput = prev / current;
+                calc = prev / current;
                 break;
             case '%':
-                comput = prev % current;
+                calc = prev % current;
                 break;
             default:
                 return;
         }
-        this.currentOperand = comput;
+        this.currentOperand = calc;
         this.operation = undefined;
         this.previousOperand = '';
     }
 }
 
 // declaration
-const numbers = document.querySelectorAll('[data-nb]');
-const operators = document.querySelectorAll('[data-op]');
-const equals = document.querySelector('[data-eq]');
-const allClear = document.querySelector('[data-ac]');
-const currentOperandTextElement = document.querySelector('[data-cur]');
-const previousOperandTextElement = document.querySelector('[data-pre]');
+const numbers = document.querySelectorAll('.number');
+const operators = document.querySelectorAll('.operators');
+const equals = document.querySelector('.equal');
+const ac = document.querySelector('.ac');
+const currentOperandTextElement = document.querySelector('.current');
+const previousOperandTextElement = document.querySelector('.previous');
 
 //main
 const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement);
@@ -130,11 +131,12 @@ operators.forEach(button => {
 })
   
 equals.addEventListener('click', () => {
-    calculator.compute()
+    calculator.calculate()
     calculator.updateDisplay()
+    calculator.clear()
 })
   
-allClear.addEventListener('click', () => {
+ac.addEventListener('click', () => {
     calculator.clear()
     calculator.updateDisplay()
 })
